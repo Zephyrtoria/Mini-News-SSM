@@ -1,0 +1,27 @@
+server:
+  port: 8080
+  servlet:
+    context-path: /
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    druid:
+      url: jdbc:mysql:///sm_db
+      username: root
+      password: "123456" # 纯数字可能报错
+      driver-class-name: com.mysql.cj.jdbc.Driver
+
+mybatis-plus:
+  type-aliases-package: com.atguigu.pojo
+  global-config:
+    db-config:
+      logic-delete-field: isDeleted
+      table-prefix: news_
+      id-type: auto
+
+#jwt配置
+jwt:
+  token:
+    tokenExpiration: 120 #有效时间，本来单位是毫秒，但是在工具类中处理过后变成了分钟
+    tokenSignKey: headline123456  #当前程序签名秘钥 自定义
